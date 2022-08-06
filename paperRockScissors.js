@@ -1,3 +1,5 @@
+// this will be used in game to randomly generated computer
+// pick for each round
 function getComputerChoice()  {
     compChoice = Math.floor(Math.random()*3);
     if(compChoice == 0)  {
@@ -9,39 +11,76 @@ function getComputerChoice()  {
     else return "scissors";
 }
 
-function rpsRound(player, computer)  {
-    if (player == "rock")  {
+// return values here will be used in the game to increment 
+// either the playerWin or computerWin tally
+function rpsRound(playerSelection, computer)  {
+    playerSelection = playerSelection.toLowerCase();
+    if (playerSelection == "rock")  {
         if (computer == "rock")  {
-            return "Tie!";
+            console.log("Tie!");
         }
         else if (computer == "paper")  {
-            return "You lose! Paper beats Rock";
+            console.log("You lose! Paper beats Rock");
+            return "lose";
         }
-        else return "You Win! Rock beats Scissors";
+        else {
+            console.log("You Win! Rock beats Scissors");
+            return "win";
+        }
     }
-    if (player == "paper")  {
+    if (playerSelection == "paper")  {
         if (computer == "rock")  {
-            return "You win! Paper beats Rock";
+            console.log("You win! Paper beats Rock");
+            return "win";
         }
         else if (computer == "paper") {
-            return "Tie!";
+            console.log("Tie!");
         }
-        else return "You lose! Scissors beats Paper";
+        else {
+            console.log("You lose! Scissors beats Paper");
+            return "lose";
+        }
     }
-    if (player == "scissors")  {
+    if (playerSelection == "scissors")  {
         if (computer == "rock")  {
-            return "You lose! Rock beats Scissors";
+            console.log("You lose! Rock beats Scissors");
+            return "lose";
         }
         else if(computer == "paper")  {
-            return "You win! Scissors beats Paper";
+            console.log("You win! Scissors beats Paper");
+            return "win";
         }
-        else return "Tie!";
+        else {
+            console.log("Tie");
+        }
     }
 }
 
-computerSelection = getComputerChoice();
+// full game of 5 rounds
+// prompt player input
+// use helper functions to determine random computer choice
+// use roundOutcome and funtion for playing one rock paper scissors...
+// round to tally final scores
+function game() {
+    let playerWins = 0;
+    let computerWins = 0;
+    let roundOutcome;
+    let playerPick;
+    let computerPick;
+    for (let i = 0; i < 5; i++) {
+        playerPick = prompt("Enter Rock, Paper, or Scissors: ");
+        computerPick = getComputerChoice();
+        roundOutcome = rpsRound(playerPick, computerPick);
+        if (roundOutcome == "win") {
+            playerWins++;
+        }
+        else if(roundOutcome == "lose")  {
+            computerWins++;
+        }
+    }
+    console.log("Computer Score is: " + computerWin);
+    console.log("Player Score is: " + playerWin);
+}
 
-console.log(computerSelection);
-console.log(rpsRound("scissors", computerSelection));
-
+game();
 

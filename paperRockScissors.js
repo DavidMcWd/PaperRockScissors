@@ -13,13 +13,13 @@ function getComputerChoice()  {
 
 // return values here will be used in the game to increment 
 // either the playerWin or computerWin tally
-function rpsRound(playerSelection, computer)  {
+function playRound(playerSelection, computerSelection)  {
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection == "rock")  {
-        if (computer == "rock")  {
+        if (computerSelection == "rock")  {
             console.log("Tie!");
         }
-        else if (computer == "paper")  {
+        else if (computerSelection == "paper")  {
             console.log("You lose! Paper beats Rock");
             return "lose";
         }
@@ -29,11 +29,11 @@ function rpsRound(playerSelection, computer)  {
         }
     }
     if (playerSelection == "paper")  {
-        if (computer == "rock")  {
+        if (computerSelection == "rock")  {
             console.log("You win! Paper beats Rock");
             return "win";
         }
-        else if (computer == "paper") {
+        else if (computerSelection == "paper") {
             console.log("Tie!");
         }
         else {
@@ -42,11 +42,11 @@ function rpsRound(playerSelection, computer)  {
         }
     }
     if (playerSelection == "scissors")  {
-        if (computer == "rock")  {
+        if (computerSelection == "rock")  {
             console.log("You lose! Rock beats Scissors");
             return "lose";
         }
-        else if(computer == "paper")  {
+        else if(computerSelection == "paper")  {
             console.log("You win! Scissors beats Paper");
             return "win";
         }
@@ -70,7 +70,7 @@ function game() {
     for (let i = 0; i < 5; i++) {
         playerPick = prompt("Enter Rock, Paper, or Scissors: ");
         computerPick = getComputerChoice();
-        roundOutcome = rpsRound(playerPick, computerPick);
+        roundOutcome = playRound(playerPick, computerPick);
         if (roundOutcome == "win") {
             playerWins++;
         }
@@ -78,8 +78,8 @@ function game() {
             computerWins++;
         }
     }
-    console.log("Computer Score is: " + computerWin);
-    console.log("Player Score is: " + playerWin);
+    console.log("Computer Score is: " + computerWins);
+    console.log("Player Score is: " + playerWins);
 }
 
 game();

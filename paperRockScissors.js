@@ -67,7 +67,7 @@ function game() {
     let roundOutcome;
     let playerPick;
     let computerPick;
-    for (let i = 0; i < 5; i++) {
+    //for (let i = 0; i < 5; i++) {
         playerPick = prompt("Enter Rock, Paper, or Scissors: ");
         computerPick = getComputerChoice();
         roundOutcome = playRound(playerPick, computerPick);
@@ -77,7 +77,7 @@ function game() {
         else if(roundOutcome == "lose")  {
             computerWins++;
         }
-    }
+    //}
     console.log("Computer Score is: " + computerWins);
     console.log("Player Score is: " + playerWins);
 }

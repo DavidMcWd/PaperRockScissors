@@ -1,0 +1,79 @@
+html {
+    box-sizing: border-box;
+  }
+
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+
+body, html{
+    height: 100%;
+    margin: 0px;
+}
+
+@font-face {
+    font-family: main;
+    src: url(fonts/IndieFlower-Regular.ttf);
+}
+
+.bg {
+    background-image: url(images/bg.jpg);
+
+    height: 100%;
+    padding-top: 100px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.play-area {
+    border: 2px solid black;
+    font: xx-large black;
+    background-color: wheat;
+    opacity: 0.85;
+    justify-content: center;
+    font-family: main;
+    font-weight: 700;
+    width: 700px;
+    height: 700px;
+    margin: auto;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.score, .current-match   {
+    display: flex;
+    gap: 200px;
+}
+
+.choices    {
+    width: 700px;
+    display: flex;
+    justify-content: space-around;
+}
+
+img  {
+    max-width: 100px;
+}
+
+.player, .computer  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.credits {
+    border: 2px solid black;
+    font: small black;
+    background-color: white;
+    opacity: 0.85;
+    font-family: main;
+    font-weight: 700;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}

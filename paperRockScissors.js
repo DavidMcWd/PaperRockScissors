@@ -1,3 +1,16 @@
+const rockButton = document.querySelector('.rockButton');
+const paperButton = document.querySelector('.paperButton');
+const scissorsButton = document.querySelector('.scissorsButton');
+
+const playerChoice = document.querySelector('.playerChoice');
+const computerChoice = document.querySelector('.computerChoice');
+
+const playerScore = document.querySelector('.playerScore');
+const computerScore = document.querySelector('.computerScore');
+
+const gamesLeft = document.querySelector('.gamesLeft');
+const dialogue = document.querySelector('.dialogue');
+
 // this will be used in game to randomly generated computer
 // pick for each round
 function getComputerChoice()  {
@@ -14,44 +27,62 @@ function getComputerChoice()  {
 // return values here will be used in the game to increment 
 // either the playerWin or computerWin tally
 function playRound(playerSelection, computerSelection)  {
-    playerSelection = playerSelection.toLowerCase();
     if (playerSelection == "rock")  {
         if (computerSelection == "rock")  {
-            console.log("Tie!");
+            playerChoice.innerHTML = '<img src="images/rock.png"></img>';
+            computerChoice.innerHTML = '<img src="images/rock.png"></img>';
+            dialogue.innerHTML = "Tie!"
         }
         else if (computerSelection == "paper")  {
-            console.log("You lose! Paper beats Rock");
+            playerChoice.innerHTML = '<img src="images/noRock.png"></img>';
+            computerChoice.innerHTML = '<img src="images/paper.png"></img>';
+            dialogue.innerHTML = "You lose! Paper beats Rock"
             return "lose";
         }
         else {
-            console.log("You Win! Rock beats Scissors");
+            playerChoice.innerHTML = '<img src="images/rock.png"></img>';
+            computerChoice.innerHTML = '<img src="images/noScissors.png"></img>';
+            dialogue.innerHTML = "You Win! Rock beats Scissors";
             return "win";
         }
     }
     if (playerSelection == "paper")  {
         if (computerSelection == "rock")  {
-            console.log("You win! Paper beats Rock");
+            playerChoice.innerHTML = '<img src="images/paper.png"></img>';
+            computerChoice.innerHTML = '<img src="images/noRock.png"></img>';
+            dialogue.innerHTML = "You win! Paper beats Rock";
             return "win";
         }
         else if (computerSelection == "paper") {
-            console.log("Tie!");
+            playerChoice.innerHTML = '<img src="images/paper.png"></img>';
+            computerChoice.innerHTML = '<img src="images/paper.png"></img>';
+            dialogue.innerHTML = "Tie!";
         }
         else {
-            console.log("You lose! Scissors beats Paper");
+            playerChoice.innerHTML = '<img src="images/noPaper.png"></img>';
+            computerChoice.innerHTML = '<img src="images/scissors.png"></img>';
+            dialogue.innerHTML = "You lose! Scissors beats Paper";
             return "lose";
         }
     }
     if (playerSelection == "scissors")  {
         if (computerSelection == "rock")  {
-            console.log("You lose! Rock beats Scissors");
+            playerChoice.innerHTML = '<img src="images/noScissors.png"></img>';
+            computerChoice.innerHTML = '<img src="images/rock.png"></img>';
+            dialogue.innerHTML = "You lose! Rock beats Scissors";
             return "lose";
         }
         else if(computerSelection == "paper")  {
-            console.log("You win! Scissors beats Paper");
+            playerChoice.innerHTML = '<img src="images/scissors.png"></img>';
+            computerChoice.innerHTML = '<img src="images/noPaper.png"></img>';
+            dialogue.innerHTML = "You win! Scissors beats Paper";
             return "win";
         }
         else {
             console.log("Tie");
+            playerChoice.innerHTML = '<img src="images/scissors.png"></img>';
+            computerChoice.innerHTML = '<img src="images/scissors.png"></img>';
+            dialogue.innerHTML = "Tie";
         }
     }
 }
@@ -67,20 +98,79 @@ function game() {
     let roundOutcome;
     let playerPick;
     let computerPick;
-    //for (let i = 0; i < 5; i++) {
-        playerPick = prompt("Enter Rock, Paper, or Scissors: ");
-        computerPick = getComputerChoice();
-        roundOutcome = playRound(playerPick, computerPick);
-        if (roundOutcome == "win") {
-            playerWins++;
-        }
-        else if(roundOutcome == "lose")  {
-            computerWins++;
-        }
-    //}
-    console.log("Computer Score is: " + computerWins);
-    console.log("Player Score is: " + playerWins);
+    let totalGames = 5;
+
+        rockButton.addEventListener('click', () =>  {
+            playerPick = "rock";
+            computerPick = getComputerChoice();
+            /* This section should display the icons for player and computer choice 
+            playerChoice.innerHTML = '<img src="images/rock.png"></img>';
+            computerChoice.innerHTML = '<img src="images/rock.png"></img>';
+            */
+            totalGames--;
+            if (totalGames < 0) return 0;
+
+            roundOutcome = playRound(playerPick, computerPick);
+            if (roundOutcome == "win") {
+                playerWins++;
+            }
+            else if(roundOutcome == "lose")  {
+                computerWins++;
+            }
+            console.log("Computer Score is: " + computerWins);
+            console.log("Player Score is: " + playerWins);
+            playerScore.innerHTML = playerWins;
+            computerScore.innerHTML = computerWins;
+            gamesLeft.innerHTML = totalGames;
+        })
+
+        paperButton.addEventListener('click', () =>  {
+            playerPick = "paper";
+            computerPick = getComputerChoice();
+            /* This section should display the icons for player and computer choice
+            playerChoice.innerHTML = '<img src="images/rock.png"></img>';
+            computerChoice.innerHTML = '<img src="images/rock.png"></img>';
+            */
+            totalGames--;
+            if (totalGames < 0) return 0;
+
+            roundOutcome = playRound(playerPick, computerPick);
+            if (roundOutcome == "win") {
+                playerWins++;
+            }
+            else if(roundOutcome == "lose")  {
+                computerWins++;
+            }
+            console.log("Computer Score is: " + computerWins);
+            console.log("Player Score is: " + playerWins);
+            playerScore.innerHTML = playerWins;
+            computerScore.innerHTML = computerWins;
+            gamesLeft.innerHTML = totalGames;
+        })
+
+        scissorsButton.addEventListener('click', () =>  {
+            playerPick = "scissors";
+            computerPick = getComputerChoice();
+            /* This section should display the icons for player and computer choice
+            playerChoice.innerHTML = '<img src="images/rock.png"></img>';
+            computerChoice.innerHTML = '<img src="images/rock.png"></img>';
+            */
+            totalGames--;
+            if (totalGames < 0) return 0;
+
+            roundOutcome = playRound(playerPick, computerPick);
+            if (roundOutcome == "win") {
+                playerWins++;
+            }
+            else if(roundOutcome == "lose")  {
+                computerWins++;
+            }
+
+            console.log("Computer Score is: " + computerWins);
+            console.log("Player Score is: " + playerWins);
+            playerScore.innerHTML = playerWins;
+            computerScore.innerHTML = computerWins;
+            gamesLeft.innerHTML = totalGames;
+        })
 }
-
-game();
-
+    game();

@@ -6,6 +6,10 @@ html {
     box-sizing: inherit;
   }
 
+*  {
+    border: 2px solid red;
+}
+
 body, html{
     height: 100%;
     margin: 0px;
@@ -14,10 +18,6 @@ body, html{
 @font-face {
     font-family: main;
     src: url(fonts/IndieFlower-Regular.ttf);
-}
-
-* {
-    border: 2px solid red; 
 }
 
 .bg {
